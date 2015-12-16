@@ -1,6 +1,6 @@
 {
   "name": "require-precompiled",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Require extension that allows for caching/precompiling",
   "license": "MIT",
   "repository": "jamestalmage/require-precompiled",
