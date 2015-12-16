@@ -1,4 +1,4 @@
-# require-precompiled [![Build Status](https://travis-ci.org/jamestalmage/require-precompiled.svg?branch=master)](https://travis-ci.org/jamestalmage/require-precompiled)
+# require-precompiled [![Build Status](https://travis-ci.org/jamestalmage/require-precompiled.svg?branch=master)](https://travis-ci.org/jamestalmage/require-precompiled) [![Coverage Status](https://coveralls.io/repos/jamestalmage/require-precompiled/badge.svg?branch=master&service=github)](https://coveralls.io/github/jamestalmage/require-precompiled?branch=master)
 
 > Require extension that allows for caching/precompiling 
 
