@@ -1,7 +1,7 @@
-import test from 'ava';
-import install from './';
-import System from 'fake-module-system';
 import path from 'path';
+import test from 'ava';
+import System from 'fake-module-system';
+import install from './';
 
 test('module is compiled with source returned from precompiler', t => {
 	const system = new System({
@@ -35,7 +35,7 @@ test('passes through to underlying extension precompiler returns undefined', t =
 	t.is(module.file, '/foo.js');
 });
 
-test('allows extensions beyond ".js"', t => {
+test('allows extensions beyond `.js`', t => {
 	const system = new System({
 		'/foo.coffee': 'coffee foo'
 	});
@@ -52,12 +52,13 @@ test('allows extensions beyond ".js"', t => {
 });
 
 test('test actual require', t => {
-	var fixtureFile = path.join(__dirname, 'fixture.js');
+	const fixtureFile = path.join(__dirname, 'fixture.js');
 
 	install(filename => {
 		if (filename === fixtureFile) {
 			return 'module.exports = "foobar"';
 		}
+
 		return null;
 	});
 

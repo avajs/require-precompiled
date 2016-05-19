@@ -9,10 +9,12 @@ function install(precompile, ext, extensions) {
 
 	extensions[ext] = function (module, filename) {
 		var source = precompile(filename);
+
 		if (source) {
 			module._compile(source, filename);
 			return;
 		}
+
 		oldExtension(module, filename);
 	};
 }

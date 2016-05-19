@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Require extension that allows for caching/precompiling",
   "license": "MIT",
-  "repository": "jamestalmage/require-precompiled",
+  "repository": "avajs/require-precompiled",
   "author": {
     "name": "James Talmage",
     "email": "james@talmage.io",
@@ -24,17 +24,11 @@
     "cache",
     "precompile"
   ],
-  "dependencies": {},
   "devDependencies": {
     "ava": "^0.14.0",
     "coveralls": "^2.11.6",
     "fake-module-system": "^0.3.0",
     "nyc": "^6.2.1",
-    "xo": "^0.13.0"
-  },
-  "xo": {
-    "ignores": [
-      "test.js"
-    ]
+    "xo": "^0.15.1"
   }
 }
