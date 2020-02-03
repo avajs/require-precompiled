@@ -64,3 +64,12 @@ test('test actual require', t => {
 
 	t.is(require('./fixture'), 'foobar');
 });
+
+test('test require extension without previous handler extension', t => {
+	install(
+		() => null,
+		'.cjs'
+	);
+
+	t.is(require('./fixture.cjs'), 'foobar-cjs');
+});
