@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "test": "xo && nyc --reporter=lcov --reporter=text ava"
+    "test": "xo && nyc ava"
   },
   "files": [
     "index.js"
@@ -29,5 +29,12 @@
     "fake-module-system": "^0.3.0",
     "nyc": "^15.0.0",
     "xo": "^0.25.3"
+  },
+  "nyc": {
+    "reporter": [
+      "html",
+      "lcov",
+      "text"
+    ]
   }
 }
