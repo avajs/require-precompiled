@@ -1,14 +1,12 @@
 # require-precompiled
 
-> Require extension that allows for caching/precompiling
-
+Modifies `require()` so you can load precompiled module sources.
 
 ## Install
 
 ```
 $ npm install --save require-precompiled
 ```
-
 
 ## Usage
 
@@ -28,17 +26,24 @@ installPrecompiler(filename => {
 const foo = require('some-module');
 ```
 
-
 ## API
 
-### requirePrecompiled(callback)
+```ts
+function installPrecompiler(
+	loadSource: (filename: string) => string | null,
+	ext = '.js',
+): void
+```
 
-#### callback
+The `loadSource()` function should return a source string when a precompiled source is available. Return `null` to fall back to Node.js' default behavior.
 
-Type: `Function(string: filename)`
+By default the precompiler is installed for `.js` files. You can specify alternative extensions by providing the second argument:
 
-Return `string` contents for a cache hit, or `null` for a miss.
-
+```js
+installPrecompiler(filename => {
+	// ...
+}, '.cjs')
+```
 
 ## License
 
