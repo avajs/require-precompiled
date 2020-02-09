@@ -3,12 +3,12 @@ module.exports = install;
 
 function install(precompile, ext, extensions) {
 	ext = ext || '.js';
-	extensions = extensions || require.extensions;
+	extensions = extensions || require.extensions; // eslint-disable-line node/no-deprecated-api
 
-	var oldExtension = extensions[ext];
+	const oldExtension = extensions[ext];
 
 	extensions[ext] = function (module, filename) {
-		var source = precompile(filename);
+		const source = precompile(filename);
 
 		if (source) {
 			module._compile(source, filename);

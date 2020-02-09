@@ -25,9 +25,9 @@
     "precompile"
   ],
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^3.2.0",
     "fake-module-system": "^0.3.0",
-    "nyc": "^6.2.1",
-    "xo": "^0.15.1"
+    "nyc": "^15.0.0",
+    "xo": "^0.25.3"
   }
 }

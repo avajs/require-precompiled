@@ -1,7 +1,7 @@
-import path from 'path';
-import test from 'ava';
-import System from 'fake-module-system';
-import install from './';
+const path = require('path');
+const test = require('ava');
+const System = require('fake-module-system');
+const install = require('.');
 
 test('module is compiled with source returned from precompiler', t => {
 	const system = new System({
@@ -26,7 +26,6 @@ test('passes through to underlying extension precompiler returns undefined', t =
 
 	install(filename => {
 		t.is(filename, '/foo.js');
-		return;
 	}, '.js', system.extensions);
 
 	const module = system.load('/foo.js');
