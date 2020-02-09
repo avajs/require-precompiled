@@ -19,13 +19,14 @@ test('module is compiled with source returned from precompiler', t => {
 	t.is(module.file, '/foo.js');
 });
 
-test('passes through to underlying extension precompiler returns undefined', t => {
+test('passes through to underlying extension precompiler returns null', t => {
 	const system = new System({
 		'/foo.js': 'normal foo'
 	});
 
 	install(filename => {
 		t.is(filename, '/foo.js');
+		return null;
 	}, '.js', system.extensions);
 
 	const module = system.load('/foo.js');
