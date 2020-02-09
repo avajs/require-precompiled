@@ -1,20 +1,15 @@
 'use strict';
 module.exports = install;
 
-function install(precompile, ext, extensions) {
-	ext = ext || '.js';
-	extensions = extensions || require.extensions;
-
-	var oldExtension = extensions[ext];
+function install(precompile, ext = '.js', extensions = require.extensions) { // eslint-disable-line node/no-deprecated-api
+	const {[ext]: oldExtension} = extensions;
 
 	extensions[ext] = function (module, filename) {
-		var source = precompile(filename);
-
-		if (source) {
+		const source = precompile(filename);
+		if (source === null) {
+			Reflect.apply(oldExtension, extensions, [module, filename]);
+		} else {
 			module._compile(source, filename);
-			return;
 		}
-
-		oldExtension(module, filename);
 	};
 }
