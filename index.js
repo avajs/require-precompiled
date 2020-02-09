@@ -1,25 +1,18 @@
 'use strict';
 module.exports = install;
 
-// we need to save it before it gets overriden by install
-const defaultHandler = require.extensions['.js'];
+// We need to save it before it gets overriden by install
+const defaultHandler = require.extensions['.js']; // eslint-disable-line node/no-deprecated-api
 
-function install(precompile, ext, extensions) {
-	ext = ext || '.js';
-	extensions = extensions || require.extensions;
-
-	// if there is no handler in extensions(as in case with .cjs)
-	// use the default one which we saved before
-	var oldExtension = extensions[ext] || defaultHandler;
+function install(precompile, ext = '.js', extensions = require.extensions) { // eslint-disable-line node/no-deprecated-api
+	const {[ext]: oldExtension = defaultHandler} = extensions;
 
 	extensions[ext] = function (module, filename) {
-		var source = precompile(filename);
-
-		if (source) {
+		const source = precompile(filename);
+		if (source === null) {
+			Reflect.apply(oldExtension, extensions, [module, filename]);
+		} else {
 			module._compile(source, filename);
-			return;
 		}
-
-		oldExtension(module, filename);
 	};
 }
