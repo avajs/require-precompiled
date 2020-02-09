@@ -10,7 +10,7 @@
     "url": "github.com/jamestalmage"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=10"
   },
   "scripts": {
     "test": "xo && nyc --reporter=lcov --reporter=text ava"
