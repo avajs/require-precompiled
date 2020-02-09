@@ -1,4 +1,4 @@
-# require-precompiled [![Build Status](https://travis-ci.org/avajs/require-precompiled.svg?branch=master)](https://travis-ci.org/avajs/require-precompiled) [![Coverage Status](https://coveralls.io/repos/github/avajs/require-precompiled/badge.svg?branch=master)](https://coveralls.io/github/avajs/require-precompiled?branch=master)
+# require-precompiled
 
 > Require extension that allows for caching/precompiling
 
