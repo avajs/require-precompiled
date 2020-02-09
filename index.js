@@ -1,16 +1,18 @@
 'use strict';
 module.exports = install;
 
-// We need to save it before it gets overriden by install
-const defaultHandler = require.extensions['.js']; // eslint-disable-line node/no-deprecated-api
+/* eslint-disable node/no-deprecated-api, eslint-comments/disable-enable-pair */
 
-function install(precompile, ext = '.js', extensions = require.extensions) { // eslint-disable-line node/no-deprecated-api
-	const {[ext]: oldExtension = defaultHandler} = extensions;
+// Save reference before a new handler is installed.
+const {'.js': defaultHandler} = require.extensions;
+
+function install(precompile, ext = '.js', extensions = require.extensions) {
+	const {[ext]: fallbackHandler = defaultHandler} = extensions;
 
 	extensions[ext] = function (module, filename) {
 		const source = precompile(filename);
 		if (source === null) {
-			Reflect.apply(oldExtension, extensions, [module, filename]);
+			Reflect.apply(fallbackHandler, extensions, [module, filename]);
 		} else {
 			module._compile(source, filename);
 		}
